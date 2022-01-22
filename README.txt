@@ -1,8 +1,7 @@
-MDB5
-Version: FREE 3.10.2
+This Project is created using
 
-Documentation:
-https://mdbootstrap.com/docs/standard/
-
-Contact:
-office@mdbootstrap.com
+HTML5
+CSS3
+Material Design Bootstrap
+Jquery
+Javascript
