@@ -1,0 +1,191 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/hospital.png" type="image/x-icon">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <title>Manage Doctors</title>
+    <link href="css/datatables.min.css" rel="stylesheet" />
+    <style>
+        div.dataTables_wrapper div.dataTables_length label {
+            width: 25%;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 30%;
+        }
+
+        #dtBasicExample_length, #dtBasicExample_info {
+            text-align: left;
+        }
+
+        .row {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        img {
+        border-radius:50px;
+        }
+    </style>
+</head>
+<body class="fixed-sn light-blue-skin">
+    <header>
+        <nav class="navbar navbar-expand-lg" id="mainnav">
+            <button style="color:black" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="">
+                <img src="img/hospital.png" height="50" alt="mdb logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+
+                <ul class="navbar-nav mr-auto" id="NavSection">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Appointments.html">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patients.html">Manage Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.html">Manage Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="color:white">
+                            <img src="img/admin.png" height="40" alt="Admin" style="border-radius:50px;" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                             aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="counter-box mb-4">
+                <h3 class='mb-3'>Doctors List</h3>
+                <table id="dtBasicExample" class="table table-responsive-lg" width="100%">
+                    <thead>
+                        <tr>
+                            <th class="th-sm">
+                                Name
+                            </th>
+                            <th class="th-sm">
+                                Position
+                            </th>
+                            <th class="th-sm">
+                                Room No
+                            </th>
+                            <th class="th-sm">
+                                Experience
+                            </th>
+                            <th class="th-sm">
+                                Joined date
+                            </th>
+                            <th class="th-sm">
+                                Fees per patient
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 1</td>
+                            <td>Anesthesia</td>
+                            <td>Room 1</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td> $500 </td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 2</td>
+                            <td>Physiotherapist</td>
+                            <td>Room 2</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 3</td>
+                            <td>Surgeon</td>
+                            <td>Room 3</td>
+                            <td>66</td>
+                            <td>2009/01/12</td>
+                            <td>$86,000</td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 4</td>
+                            <td>Psychiatrists</td>
+                            <td>Room 4</td>
+                            <td>22</td>
+                            <td>2012/03/29</td>
+                            <td>$433,060</td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 5</td>
+                            <td>Neurologists</td>
+                            <td>Room 5</td>
+                            <td>33</td>
+                            <td>2008/11/28</td>
+                            <td>$162,700</td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 6</td>
+                            <td>Radiologists</td>
+                            <td>Room 6</td>
+                            <td>61</td>
+                            <td>2012/12/02</td>
+                            <td>$372,000</td>
+                        </tr>
+                        <tr>
+                            <td> <img src="img/doctor.png" height="50" alt="Doctor" /> Doctor 7</td>
+                            <td>Emergency physicians</td>
+                            <td>Room 7</td>
+                            <td>59</td>
+                            <td>2012/08/06</td>
+                            <td>$137,500</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="js/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>
+</body>
+</html>

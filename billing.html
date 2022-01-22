@@ -1,0 +1,212 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/hospital.png" type="image/x-icon">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <title>Billing</title>
+    <link href="css/datatables.min.css" rel="stylesheet" />
+    <style>
+        div.dataTables_wrapper div.dataTables_length label {
+            width: 25%;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 30%;
+        }
+
+        #example_info {
+            text-align: left;
+        }
+
+        .row {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        img {
+            border-radius: 50px;
+        }
+       
+    </style>
+</head>
+<body class="fixed-sn light-blue-skin">
+    <header>
+        <nav class="navbar navbar-expand-lg" id="mainnav">
+            <button style="color:black" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="">
+                <img src="img/hospital.png" height="50" alt="mdb logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+
+                <ul class="navbar-nav mr-auto" id="NavSection">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Appointments.html">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patients.html">Manage Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.html">Manage Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="color:white">
+                            <img src="img/admin.png" height="40" alt="Admin" style="border-radius:50px;" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                             aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="counter-box mb-4">
+                <h3 class='mb-3'>Billing Snapshot</h3>
+                <table id="example" class="table table-responsive-lg display nowrap" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Patient Name</th>
+                            <th>Room No</th>
+                            <th>Total Bill</th>
+                            <th>Pending Bill</th>
+                            <th>Bill Summary</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="js/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var stock_data = [
+                {
+                    "name": "Patient 1",
+                    "symbol": "Room 1",
+                    "last": [600, 1800, 1200, 2400, 3600, 4200, 5000]
+                },
+                {
+                    "name": "Patient 2",
+                    "symbol": "Room 2",
+                    "last": [5000, 2500, 7000, 5500, 8000, 8500, 10000]
+                },
+                {
+                    "name": "Patient 3",
+                    "symbol": "Room 3",
+                    "last": [10000, 25000, 20000, 15000, 30000, 45000, 50000]
+                },
+                {
+                    "name": "Patient 4",
+                    "symbol": "Room 4",
+                    "last": [10000, 25000, 50000, 65000, 70000, 85000, 100000]
+                },
+                {
+                    "name": "Patient 5",
+                    "symbol": "Room 5",
+                    "last": [10000, 25000, 20000, 15000, 30000, 45000, 75000]
+                }
+            ];
+
+            let table = $('#example').DataTable({
+                ajax: function (dataSent, callback, settings) {
+                    let data = this.api().ajax.json();
+                    if (data == undefined) {
+                        data = stock_data;
+                    } else {
+                        data = data.data;
+                        for (i = 0; i < data.length; i++) {
+                            data[i].last.push(data[i].last.shift())
+                        }
+                    }
+
+                    callback({ data: data });
+                },
+                paging: false,
+                initComplete: function () {
+                    let api = this.api();
+                    setInterval(function () {
+                        api.ajax.reload();
+                    }, 5000);
+                },
+                drawCallback: function () {
+                    $('.sparkline')
+                        .map(function () {
+                            return $('canvas', this).length ? null : this;
+                        })
+                        .sparkline('html', {
+                            type: 'line',
+                            width: '250px'
+                        })
+                },
+                columns: [
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'symbol'
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row, meta) {
+                            return row.last[row.last.length - 1].toFixed(2);
+                        }
+                    },
+                    {
+                        data: null,
+                        render: function (data, type, row, meta) {
+                            var val = (row.last[row.last.length - 1] - row.last[row.last.length - 2]).toFixed(2);
+                            var colour = val < 0 ? 'red' : 'green'
+                            return type === 'display' ?
+                                '<span style="color:' + colour + '">' + val + '</span>' :
+                                val;
+                        }
+                    },
+                    {
+                        data: 'last',
+                        render: function (data, type, row, meta) {
+                            return type === 'display' ?
+                                '<span class="sparkline">' + data.toString() + '</span>' :
+                                data;
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

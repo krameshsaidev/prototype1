@@ -1,8 +1,396 @@
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/hospital.png" type="image/x-icon">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <title>Dashboard 1</title>
 
 </head>
-<body>
-Ramesh
+<body class="fixed-sn light-blue-skin">
+    <header>
+        <nav class="navbar navbar-expand-lg" id="mainnav">
+            <button style="color:black" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="">
+                <img src="img/hospital.png" height="50" alt="mdb logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+
+                <ul class="navbar-nav mr-auto" id="NavSection">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Appointments.html">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patients.html">Manage Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctors.html">Manage Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="billing.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="color:white">
+                            <img src="img/admin.png" height="40" alt="Admin" style="border-radius:50px;"/>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                             aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="four col-md-3">
+                <div class="counter-box ">
+                    <!--<i class="fa fa-thumbs-o-up"></i>-->
+                    <img src="img/doctor.png" height="50" alt="Doctor" />
+                    <span class="counter">2147</span>
+                    <p>Doctors</p>
+                </div>
+            </div>
+            <div class="four col-md-3">
+                <div class="counter-box">
+                    <!--<i class="fa fa-group"></i>-->
+                    <img src="img/nurse.png" height="50" alt="Nurse" />
+                    <span class="counter">3275</span>
+                    <p>Nurses</p>
+                </div>
+            </div>
+            <div class="four col-md-3">
+                <div class="counter-box">
+                    <!--<i class="fa fa-shopping-cart"></i>-->
+                    <img src="img/hospitalisation.png" height="50" alt="Patients" />
+                    <span class="counter">289</span>
+                    <p>Patients</p>
+                </div>
+            </div>
+            <div class="four col-md-3">
+                <div class="counter-box">
+                    <!--<i class="fa fa-user"></i>-->
+                    <img src="img/pharmacist.png" height="50" alt="Pharmacist" />
+                    <span class="counter">1563</span>
+                    <p>Pharmacists</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-5 chart-container">
+            Active Patients Count
+            <canvas id="myChart" width="400" height="200"></canvas>
+        </div>
+        <div class="col-md-5 chart-container">
+            Discharge Patients Count
+            <canvas id="myChart1" width="400" height="200"></canvas>
+        </div>
+        <div class="col-md-1"></div>
+    </div>-->
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="four col-md-6">
+                <div class="counter-box ">
+                    <!--<i class="fa fa-thumbs-o-up"></i>-->
+                    Active Patients Count
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="four col-md-6">
+                <div class="counter-box">
+                    <!--<i class="fa fa-group"></i>-->
+                    Discharge Patients Count
+                    <canvas id="myChart1" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-3" id="patientslist">
+        <div class="row">
+            <div class="four col-md-12">
+
+                <div class="counter-box">
+                    Recent Patient Activity
+                    <table class="table table-responsive-lg caption-top">
+                        <caption>
+                            <a href="#">Show all users</a>
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Contact Number</th>
+                                <th scope="col">Payment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Patient1</td>
+                                <td><span class="badge rounded-pill bg-danger">Waiting</span></td>
+                                <td> 9988776655 </td>
+                                <td> <span class="badge rounded-pill bg-primary">Advance Paid</span> </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Patient2</td>
+                                <td><span class="badge rounded-pill bg-success">Discharged</span></td>
+                                <td> 9988776655 </td>
+                                <td> <span class="badge rounded-pill bg-success">Fully Paid</span> </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Patient3</td>
+                                <td><span class="badge rounded-pill bg-danger">Admitted</span></td>
+                                <td> 9988776655 </td>
+                                <td> <span class="badge rounded-pill bg-secondary">Partially Paid</span> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container mt-4" id="recentlyjoined">
+        <div class="counter-box">
+        <h2>Recently Joined Staff</h2>
+        <div class="row row-cols-1 row-cols-md-4">
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 1
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 2
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 3
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 4
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 5
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 6
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-3">
+                <div class="card">
+                    <div class="view overlay">
+                        <img class="card-img-top" src="img/staff.png"
+                             alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Staff 7
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: '# of Count',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx1 = document.getElementById('myChart1');
+        const myChart1 = new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: '# of Count',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <script>
+        $('.carousel .carousel-item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 4; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+        $(function () {
+            $('.material-tooltip-main').tooltip({
+                template: '<div class="tooltip md-tooltip"><div class="tooltip-arrow md-arrow"></div><div class="tooltip-inner md-inner"></div></div>'
+            });
+        })
+    </script>
 </body>
 </html>
