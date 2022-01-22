@@ -15,7 +15,7 @@
 <body class="fixed-sn light-blue-skin">
     <header>
         <nav class="navbar navbar-expand-lg" id="mainnav">
-            <button style="color:black" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button style="color: white" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <a class="navbar-brand" href="index.html">
@@ -82,14 +82,14 @@
         </div>
         <div class="row mt-4">
             <div class="four col-md-6">
-                <div class="counter-box ">
+                <div class="counter-box " style="height: 500px">
                     <!--<i class="fa fa-thumbs-o-up"></i>-->
                     Active Patients Count
                     <canvas id="radarChart" width="400" height="200"></canvas>
                 </div>
             </div>
             <div class="four col-md-6">
-                <div class="counter-box">
+                <div class="counter-box" style="height: 500px">
                     <!--<i class="fa fa-group"></i>-->
                     Discharge Patients Count
                     <canvas id="pieChart" width="400" height="200"></canvas>
@@ -98,7 +98,7 @@
         </div>
         <div class="row mt-4">
             <div class="four col-md-6">
-                <div class="counter-box ">
+                <div class="counter-box " style="height: 500px">
                     <!--<i class="fa fa-thumbs-o-up"></i>-->
                     Active Patients Count
                     <canvas id="doughnutChart" width="400" height="200"></canvas>
@@ -221,7 +221,7 @@
                 ]
             },
             options: {
-                responsive: true
+                responsive: true, maintainAspectRatio: false
             }
         });
 
@@ -239,13 +239,14 @@
                 }]
             },
             options: {
-                responsive: true
+                responsive: true, maintainAspectRatio: false
             }
         });
 
         /*Chart 5*/
         //doughnut
         var ctxD = document.getElementById("doughnutChart").getContext('2d');
+        
         var myLineChart = new Chart(ctxD, {
             type: 'doughnut',
             data: {
@@ -257,7 +258,7 @@
                 }]
             },
             options: {
-                responsive: true
+                responsive: true, maintainAspectRatio: false
             }
         });
 
