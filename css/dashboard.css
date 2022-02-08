@@ -7,7 +7,9 @@
     }
 }
 
-
+.list-group-item-action:hover {
+    background-color: black;
+}
 
 #NavSection a {
     color: white;
