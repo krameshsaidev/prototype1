@@ -1,0 +1,215 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/hospital.png" type="image/x-icon">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <title>Manage Doctors</title>
+    <!--<link rel="stylesheet" href="Kendo/styles/kendo.all.min.css" />-->
+    <!--<link href="css/datatables.min.css" rel="stylesheet" />-->
+    <!--<link href="Kendo/styles/examples-offline.css" rel="stylesheet">-->
+    <link href="Kendo/styles/kendo.common.min.css" rel="stylesheet">
+    <link href="Kendo/styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="Kendo/styles/kendo.default.min.css" rel="stylesheet">
+    <link href="Kendo/styles/kendo.default.mobile.min.css" rel="stylesheet">
+    <script src="Kendo/js/jquery.min.js"></script>
+    <script src="Kendo/js/jszip.min.js"></script>
+    <script src="Kendo/js/kendo.all.min.js"></script>
+
+
+    <style>
+        div.dataTables_wrapper div.dataTables_length label {
+            width: 25%;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 30%;
+        }
+
+        #dtBasicExample_length, #dtBasicExample_info {
+            text-align: left;
+        }
+
+        .row {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        img {
+            border-radius: 50px;
+        }
+    </style>
+    <style type="text/css">
+        .customer-photo {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-size: 32px 35px;
+            background-position: center center;
+            vertical-align: middle;
+            line-height: 32px;
+            box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+            margin-left: 5px;
+        }
+
+        .customer-name {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-left: 3px;
+        }
+    </style>
+    <style>
+        .k-block, .k-draghandle, .k-grid-header, .k-grouping-header, .k-header, .k-pager-wrap, .k-treemap-tile {
+            background-color: #880188;
+        }
+
+        .k-gantt-toolbar .k-button, .k-gantt > .k-header .k-link, .k-gantt > .k-header li, .k-grid .k-header .k-button, .k-scheduler .k-header .k-button, .k-scheduler .k-header .k-link, .k-scheduler .k-header li {
+            color: #fff;
+            background-color: #880188;
+            border-color: #fff;
+            box-shadow: none;
+        }
+
+        .k-event, .k-task-complete {
+            border-color: #fff;
+            background: #880188 0 -257px none repeat-x;
+            color: #fff;
+        }
+
+        .k-grid-header .k-header > .k-link, .k-header, .k-treemap-title, .k-pager-wrap, .k-i-reload, .k-pager-numbers .k-link {
+            color: #fff;
+        }
+
+        #exaple a, .k-pager-nav {
+            background-color: #fff;
+        }
+
+        .k-state-selected, .k-list > .k-state-selected,.k-state-hover {
+            color: black;
+            background-color: #fff;
+            border-color: #880188;
+        }
+        /*#example {
+            font-family: sans-serif;
+            font-weight: 600;
+        }*/
+    </style>
+
+</head>
+<body class="fixed-sn light-blue-skin">
+    <header>
+        <nav class="navbar navbar-expand-lg" id="mainnav">
+            <button style="color: white" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" height="50" alt="logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+
+                <ul class="navbar-nav mr-auto" id="NavSection">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Scheduler.html">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientslist.html">Manage Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor.html">Manage Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bill.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="report.html">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="color:white">
+                            <img src="img/admin.png" height="40" alt="Admin" style="border-radius:50px;" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                             aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container-fluid mt-4">
+        <div id="example">
+            <div id="grid"></div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script src="Kendo/js/kendo.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#grid").kendoGrid({
+                dataSource: {
+                    type: "odata",
+                    transport: {
+                        read: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                    },
+                    pageSize: 20
+                },
+                height: 620,
+                toolbar: ["search"],
+                pageable: {
+                    refresh: true,
+                    pageSizes: true,
+                    buttonCount: 5
+                },
+                columns: [{
+                    template: "<div class='customer-photo'" +
+                        "style='background-image: url(../content/web/Customers/#:data.CustomerID#.jpg);'></div>" +
+                        "<div class='customer-name'>#: ContactName #</div>",
+                    field: "ContactName",
+                    title: "Contact Name",
+                    width: 240
+                }, {
+                    field: "ContactTitle",
+                    title: "Contact Title"
+                }, {
+                    field: "CompanyName",
+                    title: "Company Name"
+                }, {
+                    field: "Country",
+                    width: 150
+                }]
+            });
+        });
+    </script>
+    <!--<script type="text/javascript" src="js/datatables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dtBasicExample').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+    </script>-->
+</body>
+</html>

@@ -1,0 +1,174 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="img/hospital.png" type="image/x-icon">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
+    <link href="css/style.min.css" rel="stylesheet" />
+    <link href="css/dashboard.css" rel="stylesheet" />
+    <title>Manage Patients</title>
+    <link rel="stylesheet" href="Kendo/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="Kendo/styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="Kendo/styles/kendo.default.mobile.min.css" />
+    <link rel="stylesheet" href="Kendo/styles/kendo.material.min.css" />
+    <style>
+        .k-block, .k-draghandle, .k-grid-header, .k-grouping-header, .k-header, .k-grid-header .k-header, .k-pager-wrap, .k-treemap-tile {
+            background-color: #fff;
+        }
+            .k-grid-header .k-header {
+            color:black;
+            }
+
+            .k-event, .k-task-complete, .k-edit-form-container .k-primary, .k-grid-edit, .k-grid-edit:hover {
+                border-color: #fff;
+                background: #0d6efd 0 -257px none repeat-x;
+                color: #fff;
+            }
+        .k-edit-form-container .k-grid-cancel, .k-grid-cancel:hover, .k-grid-delete, .k-grid-delete:hover {
+            border-color: #fff;
+            background: red 0 -257px none repeat-x;
+            color: #fff;
+        }
+        .k-grid .k-header .k-button, .k-grid .k-header .k-button:hover {
+            background-color: green;
+        }
+        .k-grid-header .k-header > .k-link, .k-header, .k-treemap-title, .k-pager-wrap, .k-i-reload, .k-pager-numbers .k-link {
+            color: #fff;
+        }
+        .k-pager-numbers .k-state-selected {
+            border-color: #880188;
+            border-radius: 0;
+            box-shadow: none;
+            color: #880188;
+        }
+        /*.k-pager-numbers .k-state-selected {
+            background-color: #880188;
+        }*/
+    </style>
+</head>
+<body class="fixed-sn light-blue-skin">
+    <header>
+        <nav class="navbar navbar-expand-lg" id="mainnav">
+            <button style="color: white" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar" aria-controls="Navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" height="50" alt="logo" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="Navbar">
+
+                <ul class="navbar-nav mr-auto" id="NavSection">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Scheduler.html">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="patientslist.html">Manage Patients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doctor.html">Manage Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bill.html">Billing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Reports</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto nav-flex-icons">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false" style="color:white">
+                            <img src="img/admin.png" height="40" alt="Admin" style="border-radius:50px;" />
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+                             aria-labelledby="navbarDropdownMenuLink-333">
+                            <a class="dropdown-item" href="#">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </header>
+
+    <div class="container-fluid mt-4">
+        <div id="example">
+            <div id="grid"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script src="Kendo/js/kendo.all.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var crudServiceBaseUrl = "https://demos.telerik.com/kendo-ui/service",
+                dataSource = new kendo.data.DataSource({
+                    transport: {
+                        read: {
+                            url: crudServiceBaseUrl + "/Products",
+                            dataType: "jsonp"
+                        },
+                        update: {
+                            url: crudServiceBaseUrl + "/Products/Update",
+                            dataType: "jsonp"
+                        },
+                        destroy: {
+                            url: crudServiceBaseUrl + "/Products/Destroy",
+                            dataType: "jsonp"
+                        },
+                        create: {
+                            url: crudServiceBaseUrl + "/Products/Create",
+                            dataType: "jsonp"
+                        },
+                        parameterMap: function (options, operation) {
+                            if (operation !== "read" && options.models) {
+                                return { models: kendo.stringify(options.models) };
+                            }
+                        }
+                    },
+                    batch: true,
+                    pageSize: 20,
+                    schema: {
+                        model: {
+                            id: "ProductID",
+                            fields: {
+                                ProductID: { editable: false, nullable: true },
+                                ProductName: { validation: { required: true } },
+                                UnitPrice: { type: "number", validation: { required: true, min: 1 } },
+                                Discontinued: { type: "boolean" },
+                                UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                            }
+                        }
+                    }
+                });
+
+            $("#grid").kendoGrid({
+                dataSource: dataSource,
+                pageable: true,
+                height: 620,
+                toolbar: ["create"],
+                columns: [
+                    { field: "ProductName", title: "Product Name" },
+                    { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "120px" },
+                    { field: "UnitsInStock", title: "Units In Stock", width: "120px" },
+                    { field: "Discontinued", width: "120px" },
+                    { command: ["edit", "destroy"], title: "&nbsp;", width: "250px" }],
+                editable: "popup"
+            });
+        });
+    </script>
+</body>
+</html>
