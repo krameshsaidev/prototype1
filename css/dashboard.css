@@ -20,11 +20,12 @@
     border-radius: 10px;
 }
 
-#NavSection li.active  a {
-    background-color: black;
-    border:1px solid white;
-    border-radius:10px;
-}
+    #NavSection li.active a {
+        background-color: #fff;
+        border: 1px solid white;
+        border-radius: 10px;
+        color:black;
+    }
 
 .map-container {
     overflow: hidden;

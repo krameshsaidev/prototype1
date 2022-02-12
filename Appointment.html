@@ -119,25 +119,16 @@
 
     </div>-->
             <select id="optional" multiple="multiple" data-placeholder="Select doctors...">
-                <option value="1">Alex</option>
-                <option value="2">Bob</option>
-                <option value="3">Charlie</option>
-                <option value="4">Test</option>
-                <option value="5">Michael Leverling</option>
-                <option value="6">Andrew Callahan</option>
-                <option value="7">Michael Suyama</option>
-                <option value="8">Anne King</option>
-                <option value="9">Laura Peacock</option>
-                <option value="10">Robert Fuller</option>
-                <option>Janet White</option>
-                <option>Nancy Leverling</option>
-                <option>Robert Buchanan</option>
-                <option>Margaret Buchanan</option>
-                <option>Andrew Fuller</option>
-                <option>Anne Davolio</option>
-                <option>Andrew Suyama</option>
-                <option>Nige Buchanan</option>
-                <option>Laura Fuller</option>
+                <option value="1">Doctor 1</option>
+                <option value="2">Doctor 2</option>
+                <option value="3">Doctor 3</option>
+                <option value="4">Doctor 4</option>
+                <option value="5">Doctor 5</option>
+                <option value="6">Doctor 6</option>
+                <option value="7">Doctor 7</option>
+                <option value="8">Doctor 8</option>
+                <option value="9">Doctor 9</option>
+                <option value="10">Doctor 10</option>
             </select>
             <div id="scheduler"></div>
         </div>
@@ -153,7 +144,7 @@
     <script>
         $(document).ready(function () {
             var optional = $("#optional").kendoMultiSelect({
-                autoClose: false
+                autoClose: true
             }).data("kendoMultiSelect");
         });
     </script>
@@ -229,16 +220,16 @@
 
             $("#optional").change(function (e) {
                 var availableOwners = {
-                    "1": { text: "Alex", value: 1, color: "#f8a398" },
-                    "2": { text: "Bob", value: 2, color: "#51a0ed" },
-                    "3": { text: "Charlie", value: 3, color: "#56ca85" },
-                    "4": { text: "Test1", value: 4, color: "#FF0000" },
-                    "5": { text: "Test2", value: 5, color: "#0000FF" },
-                    "6": { text: "Test3", value: 6, color: "#FFFF00" },
-                    "7": { text: "Test4", value: 7, color: "#00FFFF" },
-                    "8": { text: "Test5", value: 8, color: "#FF00FF" },
-                    "9": { text: "Test6", value: 9, color: "#800080" },
-                    "10": { text: "Test7", value: 10, color: "#FF8C00" }
+                    "1": { text: "Doctor 1", value: 1, color: "#f8a398" },
+                    "2": { text: "Doctor 2", value: 2, color: "#51a0ed" },
+                    "3": { text: "Doctor 3", value: 3, color: "#56ca85" },
+                    "4": { text: "Doctor 4", value: 4, color: "#FF0000" },
+                    "5": { text: "Doctor 5", value: 5, color: "#0000FF" },
+                    "6": { text: "Doctor 6", value: 6, color: "#FFFF00" },
+                    "7": { text: "Doctor 7", value: 7, color: "#00FFFF" },
+                    "8": { text: "Doctor 8", value: 8, color: "#FF00FF" },
+                    "9": { text: "Doctor 9", value: 9, color: "#800080" },
+                    "10": { text: "Doctor 10", value: 10, color: "#FF8C00" }
                 };
 
                 var checked = $.map($("#optional :selected"), function (checkbox) {
