@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="Kendo/styles/kendo.default.min.css" />
     <link rel="stylesheet" href="Kendo/styles/kendo.default.mobile.min.css" />
     <!--<link rel="stylesheet" href="Kendo/styles/kendo.material.min.css" />-->
-    <style scoped>
+    <!--<style scoped>
         .k-nav-current > .k-link span + span {
             max-width: 200px;
             display: inline-block;
@@ -55,7 +55,7 @@
             left: 234px;
             top: 81px;
         }
-    </style>
+    </style>-->
 </head>
 <body class="fixed-sn light-blue-skin">
     <header>
@@ -108,7 +108,7 @@
         </nav>
     </header>
     <div class="container-fluid mt-2">
-        <div id="example">
+        <div id="example" class="row">
             <!--<div id="team-schedule">
         <div id="people">
             <input checked type="checkbox" id="alex" aria-label="Alex" value="1">
@@ -118,18 +118,22 @@
         </div>
 
     </div>-->
-            <select id="optional" multiple="multiple" data-placeholder="Select doctors...">
-                <option value="1">Doctor 1</option>
-                <option value="2">Doctor 2</option>
-                <option value="3">Doctor 3</option>
-                <option value="4">Doctor 4</option>
-                <option value="5">Doctor 5</option>
-                <option value="6">Doctor 6</option>
-                <option value="7">Doctor 7</option>
-                <option value="8">Doctor 8</option>
-                <option value="9">Doctor 9</option>
-                <option value="10">Doctor 10</option>
-            </select>
+            <div class="col-md-2" style="width:10%">Select Doctors:</div>
+            <div class="col-md-6">
+                <select id="optional" class="form-control" style="border: 2px solid #520152" multiple="multiple" data-placeholder="Select doctors...">
+                    <option value="1">Doctor 1</option>
+                    <option value="2">Doctor 2</option>
+                    <option value="3">Doctor 3</option>
+                    <option value="4">Doctor 4</option>
+                    <option value="5">Doctor 5</option>
+                    <option value="6">Doctor 6</option>
+                    <option value="7">Doctor 7</option>
+                    <option value="8">Doctor 8</option>
+                    <option value="9">Doctor 9</option>
+                    <option value="10">Doctor 10</option>
+                </select>
+            </div>
+           
             <div id="scheduler"></div>
         </div>
     </div>
